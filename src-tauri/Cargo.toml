@@ -1,6 +1,6 @@
 [package]
 name = "skaldic"
-version = "0.1.0"
+version = "0.2.0"
 description = "Convert MIDI into Mordhau lute and flute music."
 authors = ["Shay Henderson"]
 license = "MIT"
@@ -25,3 +25,7 @@ tauri = { version = "2.11.2", features = [] }
 tauri-plugin-log = "2"
 tauri-plugin-fs = "2"
 tauri-plugin-dialog = "2"
+tauri-plugin-process = "2"
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-updater = "2"

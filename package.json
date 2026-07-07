@@ -1,7 +1,7 @@
 {
   "name": "skaldic",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Convert MIDI into Mordhau lute and flute music.",
   "author": "Shay Henderson",
   "license": "MIT",
@@ -22,6 +22,8 @@
     "@tauri-apps/api": "^2.11.1",
     "@tauri-apps/plugin-dialog": "^2.7.1",
     "@tauri-apps/plugin-fs": "^2.5.1",
+    "@tauri-apps/plugin-process": "^2.3.1",
+    "@tauri-apps/plugin-updater": "^2.10.1",
     "@tonejs/midi": "^2.0.28",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",

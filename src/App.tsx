@@ -15,6 +15,7 @@ import { prepareSong } from "./app/prepare";
 import { SongList } from "./ui/SongList";
 import { AddPanel } from "./ui/AddPanel";
 import { Guide, GUIDE_SEEN_KEY } from "./ui/Guide";
+import { UpdateBanner } from "./ui/UpdateBanner";
 import { getVersion } from "@tauri-apps/api/app";
 import { ask, save, open } from "@tauri-apps/plugin-dialog";
 
@@ -177,6 +178,7 @@ export default function App() {
         <span className="flourish">⚜</span>Skaldic<span className="flourish">⚜</span>
       </h1>
       <p className="subtitle">{dir ?? "resolving SaveGames…"}</p>
+      <UpdateBanner />
       {error && <pre className="error">{error}</pre>}
       {needsSetup ? (
         <Setup dir={dir} onRetry={resolve} />

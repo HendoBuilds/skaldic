@@ -436,4 +436,17 @@ button:disabled { opacity: 0.5; cursor: default; box-shadow: none; }
   padding: 11px 15px;
   font-size: 14px;
 }
+
+.update-banner {
+  background: linear-gradient(180deg, rgba(236, 200, 121, 0.09), rgba(236, 200, 121, 0.04));
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 15px 18px;
+  margin: 0 0 18px;
+}
+.update-lead { color: var(--gold-bright); font-size: 15px; margin: 0 0 6px; }
+.update-notes { color: var(--ink); font-size: 14px; white-space: pre-wrap; margin: 0 0 6px; }
+.update-hint { color: var(--ink-dim); font-size: 13px; font-style: italic; margin: 0 0 12px; }
+.update-hint code { font-size: 12px; }
+.update-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .version { color: var(--ink-dim); font-size: 11px; letter-spacing: 0.05em; margin-bottom: 6px; }
