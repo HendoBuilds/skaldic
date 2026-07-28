@@ -1,8 +1,9 @@
 import { test, expect } from "vitest";
+import type { RawTrack } from "../core/midi";
 import { suggestAssignment } from "./suggest";
 
 // A monophonic line: one note per tick, climbing through [lo, hi].
-const line = (index: number, n: number, [lo, hi]: [number, number]) =>
+const line = (index: number, n: number, [lo, hi]: [number, number]): RawTrack =>
   ({
     index,
     name: `T${index}`,
@@ -15,10 +16,10 @@ const line = (index: number, n: number, [lo, hi]: [number, number]) =>
       durationTicks: 60,
       durationSec: 0.4,
     })),
-  }) as any;
+  });
 
 // A chordal part: nChords chords of `size` notes each, voiced upward from `lo`.
-const chords = (index: number, nChords: number, size: number, lo: number) =>
+const chords = (index: number, nChords: number, size: number, lo: number): RawTrack =>
   ({
     index,
     name: `T${index}`,
@@ -33,7 +34,7 @@ const chords = (index: number, nChords: number, size: number, lo: number) =>
         durationSec: 0.4,
       })),
     ).flat(),
-  }) as any;
+  });
 
 test("flute = the high single-line lead; lute = the chordal/low backing", () => {
   const tracks = [

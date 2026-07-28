@@ -1,8 +1,15 @@
 import { test, expect } from "vitest";
+import type { RawTrack } from "../core/midi";
 import { rangeFit } from "./fit";
 
-const tk = (midis: number[]) =>
-  ({ notes: midis.map((midi) => ({ ticks: 0, midi, durationTicks: 1, durationSec: 1 })) }) as any;
+const tk = (midis: number[]): RawTrack => ({
+  index: 0,
+  name: "t",
+  channel: 0,
+  isPercussion: false,
+  pitchRange: null,
+  notes: midis.map((midi) => ({ ticks: 0, midi, durationTicks: 1, durationSec: 1 })),
+});
 
 // Lute range = [24, 83], Flute range = [36, 83].
 
