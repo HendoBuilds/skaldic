@@ -15,7 +15,7 @@ export function sanitizeName(s: string): string {
     .normalize("NFKD")
     .replace(/[̀-ͯ]/g, "") // strip diacritics (é → e)
     .replace(/[^\x20-\x7e]/g, "") // drop any remaining non-ASCII
-    .replace(/[\\/:*?"<>|;\[\]()]+/g, "") // ';' would corrupt the |name;tempo| header
+    .replace(/[\\/:*?"<>|;[\]()]+/g, "") // ';' would corrupt the |name;tempo| header
     .replace(/\s+/g, " ")
     .trim();
 }
