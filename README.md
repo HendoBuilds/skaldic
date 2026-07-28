@@ -36,6 +36,8 @@ The mod.io pages are the source of truth if Mordhau's mod loading changes in a p
 
 Download the latest `Skaldic_x.y.z_x64-setup.exe` from the [**Releases**](https://github.com/HendoBuilds/skaldic/releases/latest) page and run it. Windows SmartScreen may warn that the publisher is unknown (the build is unsigned) — choose **More info → Run anyway**. Or build from source (below).
 
+Skaldic uses [SignPath Foundation](https://signpath.org/) for code signing of its Windows installers (certificate application in progress): see the [code signing policy](docs/CODE_SIGNING_POLICY.md), which also covers the project's privacy practices.
+
 From v0.2.0 on, Skaldic checks for new versions when it starts and offers to update in place — your songs and saved projects are kept. Updates are cryptographically signed and verified before they install. (v0.1.0 predates this: update from it by downloading the new installer once and running it over your install.)
 
 ## Using it
