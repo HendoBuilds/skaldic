@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { defaultSaveDir, saveDirExists, listSongs, addSong, removeSong, renameSong } from "./io/savegames";
 import {
   listProjects,
@@ -31,7 +31,7 @@ export default function App() {
   const [showGuide, setShowGuide] = useState(() => !localStorage.getItem(GUIDE_SEEN_KEY));
   const [version, setVersion] = useState("");
 
-  async function refresh(d: string) {
+  const refresh = useCallback(async (d: string) => {
     try {
       const [list, projects] = await Promise.all([listSongs(d), listProjects()]);
       setSongs(list);
@@ -41,26 +41,30 @@ export default function App() {
     } catch (e) {
       setError(String(e));
     }
-  }
+  }, []);
 
-  async function resolve() {
-    try {
-      const d = await defaultSaveDir();
-      setDir(d);
-      setDataDir(await projectsLocation());
-      if (await saveDirExists(d)) {
-        setNeedsSetup(false);
-        await refresh(d);
-      } else {
-        setNeedsSetup(true);
+  // Locate the save dir and load the songbook; bumping initAttempt re-runs it
+  // (Setup's "try again").
+  const [initAttempt, setInitAttempt] = useState(0);
+  useEffect(() => {
+    void (async () => {
+      try {
+        const d = await defaultSaveDir();
+        setDir(d);
+        setDataDir(await projectsLocation());
+        if (await saveDirExists(d)) {
+          setNeedsSetup(false);
+          await refresh(d);
+        } else {
+          setNeedsSetup(true);
+        }
+      } catch (e) {
+        setError(String(e));
       }
-    } catch (e) {
-      setError(String(e));
-    }
-  }
+    })();
+  }, [initAttempt, refresh]);
 
   useEffect(() => {
-    resolve();
     getVersion().then(setVersion).catch(() => {});
   }, []);
 
@@ -181,7 +185,7 @@ export default function App() {
       <UpdateBanner />
       {error && <pre className="error">{error}</pre>}
       {needsSetup ? (
-        <Setup dir={dir} onRetry={resolve} />
+        <Setup dir={dir} onRetry={() => setInitAttempt((n) => n + 1)} />
       ) : (
         <>
           {dir && (

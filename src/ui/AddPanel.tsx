@@ -76,10 +76,12 @@ export function AddPanel({ dir, onAdded, editing, onImport }: AddPanelProps) {
 
   useEffect(() => () => stopPreview(), []);
 
-  // Re-edit: rebuild the panel from a saved project.
-  useEffect(() => {
-    if (!editing) return;
-    stopPreview();
+  // Re-edit: rebuild the panel from a saved project. State is adjusted during
+  // render (guarded by the previous value) so it lands in the same pass; only
+  // the preview teardown, a real side effect, stays in an effect.
+  const [prevEditing, setPrevEditing] = useState<typeof editing>(null);
+  if (editing && editing !== prevEditing) {
+    setPrevEditing(editing);
     setIsPlaying(false);
     setError(null);
     const mt = melodicTracks(editing.midi);
@@ -94,6 +96,9 @@ export function AddPanel({ dir, onAdded, editing, onImport }: AddPanelProps) {
     setOffsets(editing.offsets ?? {});
     setFilename(editing.filename);
     setEditName(editing.name);
+  }
+  useEffect(() => {
+    if (editing) stopPreview();
   }, [editing]);
 
   // Space toggles Preview (unless you're typing in a field).
@@ -227,7 +232,9 @@ export function AddPanel({ dir, onAdded, editing, onImport }: AddPanelProps) {
       setIsPlaying(false);
     }
   }
-  previewRef.current = preview;
+  useEffect(() => {
+    previewRef.current = preview;
+  });
 
   async function send() {
     if (!midi) return;
