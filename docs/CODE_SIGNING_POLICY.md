@@ -1,12 +1,10 @@
 # Code signing policy
 
-Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by [SignPath Foundation](https://signpath.org/).
-
-**Status:** certificate application in progress. Until it is granted, installers are unsigned and Windows SmartScreen may warn about an unknown publisher (the [README](../README.md#install) explains how to proceed). Once signing is active, every Windows installer published on the [Releases](https://github.com/HendoBuilds/skaldic/releases) page carries a signature that Windows verifies against this repository's source.
+**Status:** installers are currently unsigned, and Windows SmartScreen may warn about an unknown publisher (the [README](../README.md#install) explains how to proceed). Code signing for the Windows installers is planned as the project grows; once it is active, every installer published on the [Releases](https://github.com/HendoBuilds/skaldic/releases) page will carry a signature that Windows verifies.
 
 ## Build and signing process
 
-Releases are built by the project's public CI pipeline ([release workflow](../.github/workflows/release.yml)) from the source in this repository, on a `v*` tag push. Only binaries produced by that pipeline are submitted for signing, and each signing request is manually approved by the maintainer before the release is published. Skaldic contains no proprietary components; see [NOTICE.md](../NOTICE.md) for third-party acknowledgments and licenses.
+Releases are built by the project's public CI pipeline ([release workflow](../.github/workflows/release.yml)) from the source in this repository, on a `v*` tag push. Only binaries produced by that pipeline are published, and each release is manually tested and approved by the maintainer before it goes live. Skaldic contains no proprietary components; see [NOTICE.md](../NOTICE.md) for third-party acknowledgments and licenses.
 
 ## Team and roles
 
