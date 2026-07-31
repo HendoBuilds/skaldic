@@ -25,9 +25,12 @@ export function convert(
 ): Partition {
   const cooldownTicks = opts.cooldownTicks ?? 0; // default: rely on in-game cooldown; tune later
   const maxPerChord = opts.maxPerChord ?? 3;
-  const tempo = midi.tempos.length
+  // A degenerate tempo (0/NaN/Infinity bpm, or ppq 0) must not reach the output:
+  // it propagates into every tick and the |name;tempo| header, and can hang the game.
+  const rawTempo = midi.tempos.length
     ? Math.round(60_000_000 / midi.tempos[0].bpm / midi.ppq)
     : 1000;
+  const tempo = Number.isFinite(rawTempo) && rawTempo > 0 ? rawTempo : 1000;
   const assigned = removeDrums(midi.tracks).filter(
     (rt) => assignment[rt.index] === 0 || assignment[rt.index] === 1,
   );

@@ -94,6 +94,22 @@ test("converts a very large track without error", () => {
   expect(p.tracks[0].notes.every((n) => n.type === 1)).toBe(true);
 });
 
+test("falls back to the default tempo when the MIDI tempo is degenerate", () => {
+  // A zero/NaN bpm or zero ppq would make tempo 0/NaN/Infinity, which propagates
+  // into every tick and the |name;tempo| header — the game can freeze on it.
+  const cases: ParsedMidi[] = [
+    { ...raw, tempos: [{ ticks: 0, bpm: 0 }] },
+    { ...raw, tempos: [{ ticks: 0, bpm: NaN }] },
+    { ...raw, tempos: [{ ticks: 0, bpm: Infinity }] },
+    { ...raw, ppq: 0 },
+  ];
+  for (const m of cases) {
+    const p = convert(m, { 0: 0, 1: 1 }, "Degenerate");
+    expect(p.tempo).toBe(1000);
+    expect(p.tracks.every((t) => t.notes.every((n) => Number.isFinite(n.tick)))).toBe(true);
+  }
+});
+
 test("clamps instead of octave-folding when fold is off", () => {
   const m: ParsedMidi = {
     ppq: 480,
