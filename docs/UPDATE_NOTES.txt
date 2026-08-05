@@ -1,1 +1,2 @@
-Small fixes and behind-the-scenes improvements.
+Fixed a bug where certain MIDI files could freeze the game during playback.
+Draft releases are now built and signed automatically. Behind-the-scenes cleanup.

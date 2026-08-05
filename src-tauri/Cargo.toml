@@ -1,6 +1,6 @@
 [package]
 name = "skaldic"
-version = "0.2.0"
+version = "0.3.0"
 description = "Convert MIDI into Mordhau lute and flute music."
 authors = ["Shay Henderson"]
 license = "MIT"
