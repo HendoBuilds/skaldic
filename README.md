@@ -21,14 +21,27 @@ Skaldic converts a `.mid` file into a Mordhau song you can play in-game. It auto
 
 LuteMod isn't bundled with Skaldic; you install it once, either way below.
 
-**Manually (no other apps needed)** — download [LuteMod](https://mod.io/g/mordhau/m/lutemod) and the [Clientside Mod Autoloader](https://mod.io/g/mordhau/m/clientside-mod-autoloader) (plus its [Clientside Skin Module](https://mod.io/g/mordhau/m/clientside-skin-loader-map) prerequisite) from mod.io. Drop the `.pak` files into Mordhau's `Content\CustomPaks` folder (next to the existing `Paks` folder), then add LuteMod to `Game.ini` at `%LocalAppData%\Mordhau\Saved\Config\WindowsClient\Game.ini`:
+**Manually (no other apps needed)** — download [LuteMod](https://mod.io/g/mordhau/m/lutemod) and the [Clientside Mod Autoloader](https://mod.io/g/mordhau/m/clientside-mod-autoloader) from mod.io. Drop the `.pak` files into Mordhau's `Content\CustomPaks` folder (create it next to the existing `Paks` folder if it isn't there). You should end up with the autoloader's `AutoLoaderWindowsClient.pak` and LuteMod's pak (`FLuteMod_2.69.pak` at time of writing) sitting side by side. Then add LuteMod to `Game.ini` at `%LocalAppData%\Mordhau\Saved\Config\WindowsClient\Game.ini`:
 
 ```ini
-[/Game/Mordhau/Maps/ClientModMap/BP_ClientModLoaderActor.BP_ClientModLoaderActor_C]
+[/AutoLoader/BP_AutoLoaderActor.BP_AutoLoaderActor_C]
 ClientMods=/Game/Mordhau/Maps/LuteMod/Client/BP_LuteModClientLoader.BP_LuteModClientLoader_C
+ModListWidgetStayTime=5.0
+
+[Mods]
+ModStartupMap=/AutoLoader/ClientModNew_MainMenu.ClientModNew_MainMenu
 ```
 
+Launch Mordhau once before you edit `Game.ini` — the file doesn't exist until the game has run.
+
 The mod.io pages are the source of truth if Mordhau's mod loading changes in a patch.
+
+**If LuteMod doesn't show up in-game**, the paks are usually fine and it's `Game.ini`. Check, in order:
+
+- `bDisableClientMods=False` — if it's `True`, no client mods load at all.
+- An older `[/Game/Mordhau/Maps/ClientModMap/BP_ClientModLoaderActor...]` block — delete it. It's the previous autoloader and is superseded by the `[/AutoLoader/...]` block above.
+- An old `zz_clientmodloadingmap_425.pak` in `CustomPaks` or `Paks` — delete it; it conflicts with the current autoloader.
+- A `GameDefaultMap=/Game/Mordhau/Maps/ClientModMap/ClientMod_MainMenu` line in `Engine.ini` (same folder) — remove it. It's left over from the old setup and can crash Mordhau on startup.
 
 **Via LuteBot** — [LuteBot](https://github.com/Dimencia/LuteBot3)'s installer sets LuteMod up for you. Easiest if you already use it, or have installed LuteMod through it before.
 
