@@ -1,14 +1,14 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "Skaldic: core + dialog + scoped fs access to Mordhau SaveGames and Skaldic app data",
+  "description": "Skaldic: core + dialog + scoped fs access to Mordhau SaveGames, Skaldic app data, and Downloads/Documents/Desktop for project export-import",
   "windows": ["main"],
   "permissions": [
     "core:default",
     "dialog:default",
     "fs:default",
-    { "identifier": "fs:allow-read-file",  "allow": [{ "path": "$LOCALDATA/Mordhau/Saved/SaveGames/**" }, { "path": "$RESOURCE/**" }, { "path": "$APPDATA/**" }, { "path": "$HOME/**" }] },
-    { "identifier": "fs:allow-write-file", "allow": [{ "path": "$LOCALDATA/Mordhau/Saved/SaveGames/**" }, { "path": "$APPDATA/**" }, { "path": "$HOME/**" }] },
+    { "identifier": "fs:allow-read-file",  "allow": [{ "path": "$LOCALDATA/Mordhau/Saved/SaveGames/**" }, { "path": "$RESOURCE/**" }, { "path": "$APPDATA/**" }, { "path": "$DOWNLOAD/**" }, { "path": "$DOCUMENT/**" }, { "path": "$DESKTOP/**" }] },
+    { "identifier": "fs:allow-write-file", "allow": [{ "path": "$LOCALDATA/Mordhau/Saved/SaveGames/**" }, { "path": "$APPDATA/**" }, { "path": "$DOWNLOAD/**" }, { "path": "$DOCUMENT/**" }, { "path": "$DESKTOP/**" }] },
     { "identifier": "fs:allow-remove",     "allow": [{ "path": "$LOCALDATA/Mordhau/Saved/SaveGames/**" }, { "path": "$APPDATA/**" }] },
     { "identifier": "fs:allow-exists",     "allow": [{ "path": "$LOCALDATA/Mordhau/Saved/SaveGames" }, { "path": "$LOCALDATA/Mordhau/Saved/SaveGames/**" }, { "path": "$APPDATA" }, { "path": "$APPDATA/**" }] },
     { "identifier": "fs:allow-copy-file",  "allow": [{ "path": "$LOCALDATA/Mordhau/Saved/SaveGames/**" }] },
