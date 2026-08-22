@@ -15,6 +15,9 @@ export function sanitizeName(s: string): string {
     .normalize("NFKD")
     .replace(/[̀-ͯ]/g, "") // strip diacritics (é → e)
     .replace(/[^\x20-\x7e]/g, "") // drop any remaining non-ASCII
+    .replace(/[@\0]/g, "") // mirror sav.ts readSavContent's strip set: '@' pads chunks and
+    // NUL is inert, so either one in a name is indistinguishable from padding on read-back
+    // and gets silently dropped — keeping them out of sanitizeName is the single source of truth
     .replace(/[\\/:*?"<>|;[\]()]+/g, "") // ';' would corrupt the |name;tempo| header
     .replace(/\s+/g, " ")
     .trim();
@@ -28,4 +31,23 @@ export function withSong(names: string[], name: string): string[] {
 /** Remove a song name from the menu list. */
 export function withoutSong(names: string[], name: string): string[] {
   return names.filter((n) => n !== name);
+}
+
+/**
+ * Match locally-saved projects (raw names, e.g. from project JSON filenames) to the
+ * in-game song list (names as read back from the .sav index, which are always already
+ * sanitize-clean — see sav.ts readSavContent). Compares sanitized-to-sanitized so a
+ * project saved by an older Skaldic version with a since-forbidden character in its name
+ * (e.g. '@', pre this fix) still matches its in-game entry instead of showing as a
+ * false orphan or losing its "editable" badge.
+ */
+export function matchProjects(
+  songs: string[],
+  projects: string[],
+): { editable: Set<string>; orphans: string[] } {
+  const sanitizedSongs = new Set(songs.map(sanitizeName));
+  return {
+    editable: new Set(projects.map(sanitizeName)),
+    orphans: projects.filter((p) => !sanitizedSongs.has(sanitizeName(p))),
+  };
 }

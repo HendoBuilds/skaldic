@@ -1,5 +1,6 @@
 import { test, expect } from "vitest";
 import { buildSavChunks, readSavContent } from "./sav";
+import { sanitizeName } from "../io/index-ops";
 
 const header = new Uint8Array(1235).fill(7); // stand-in header for unit tests
 
@@ -18,5 +19,15 @@ test("long content spans multiple chunks and round-trips", () => {
     "|";
   const chunks = buildSavChunks(content, header);
   expect(chunks.length).toBeGreaterThan(1);
+  expect(readSavContent(chunks, header)).toBe(content);
+});
+
+test("a sanitized song name round-trips through the write/read format", () => {
+  // Regression: '@' is used as the chunk padding byte, so a literal '@' in an index
+  // entry is indistinguishable from padding and gets stripped on read-back — desyncing
+  // the index from what's actually on disk. sanitizeName must not let '@' through.
+  const name = sanitizeName("DJ K@t Boogie.mid");
+  const content = `|PartitionIndex|${name}|`;
+  const chunks = buildSavChunks(content, header);
   expect(readSavContent(chunks, header)).toBe(content);
 });

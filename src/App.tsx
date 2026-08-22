@@ -10,7 +10,7 @@ import {
   readProjectFile,
   type Project,
 } from "./io/projects";
-import { sanitizeName } from "./io/index-ops";
+import { sanitizeName, matchProjects } from "./io/index-ops";
 import { prepareSong } from "./app/prepare";
 import { SongList } from "./ui/SongList";
 import { AddPanel } from "./ui/AddPanel";
@@ -35,8 +35,9 @@ export default function App() {
     try {
       const [list, projects] = await Promise.all([listSongs(d), listProjects()]);
       setSongs(list);
-      setEditable(new Set(projects));
-      setOrphans(projects.filter((p) => !list.includes(p)));
+      const { editable, orphans } = matchProjects(list, projects);
+      setEditable(editable);
+      setOrphans(orphans);
       setError(null);
     } catch (e) {
       setError(String(e));
