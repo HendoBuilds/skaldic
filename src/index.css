@@ -435,7 +435,10 @@ button:disabled { opacity: 0.5; cursor: default; box-shadow: none; }
   border-radius: 9px;
   padding: 11px 15px;
   font-size: 14px;
+  margin: 14px 0; /* the container is a div, so keep the block spacing the old <p> got from UA styles */
 }
+.notice-hint { color: rgba(166, 216, 160, 0.7); font-size: 12px; font-style: italic; margin: 5px 0 0; }
+.notice-hint strong { color: #a6d8a0; font-weight: 600; }
 
 .update-banner {
   background: linear-gradient(180deg, rgba(236, 200, 121, 0.09), rgba(236, 200, 121, 0.04));

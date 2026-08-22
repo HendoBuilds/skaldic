@@ -291,7 +291,15 @@ export function AddPanel({ dir, onAdded, editing, onImport }: AddPanelProps) {
           <span className="chosen">{filename || "or drop a .mid here"}</span>
         </div>
         {error && <p className="error">{error}</p>}
-        {notice && tracks.length === 0 && <p className="notice">{notice}</p>}
+        {notice && tracks.length === 0 && (
+          <div className="notice">
+            {notice}
+            <p className="notice-hint">
+              In game: <strong>Kick</strong> opens the song menu · <strong>0–9</strong> picks a song ·{" "}
+              <strong>Feint</strong> plays/pauses.
+            </p>
+          </div>
+        )}
         {tracks.length > 0 && (
           <>
             <p className="hint">{filename} — assign tracks to Lute / Flute:</p>
