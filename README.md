@@ -3,7 +3,6 @@
 Turn any MIDI into music you can perform in **Mordhau** — automatically arranged across the lute and flute.
 
 [![Latest release](https://img.shields.io/github/v/release/HendoBuilds/skaldic?sort=semver)](https://github.com/HendoBuilds/skaldic/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/HendoBuilds/skaldic/total)](https://github.com/HendoBuilds/skaldic/releases)
 [![License: MIT](https://img.shields.io/github/license/HendoBuilds/skaldic)](LICENSE)
 [![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri-24C8DB?logo=tauri&logoColor=white)](https://tauri.app)
 [![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows&logoColor=white)](https://github.com/HendoBuilds/skaldic/releases/latest)

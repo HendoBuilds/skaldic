@@ -40,7 +40,16 @@ Actions secrets (Settings → Secrets and variables → Actions):
    what changed, written for players. The workflow uses them as the release
    description and as the text shown in the in-app update prompt.
 
-3. **Commit, then tag and push**:
+3. **Audit Rust dependencies** for known vulnerabilities:
+
+   ```powershell
+   cd src-tauri; cargo audit; cd ..
+   ```
+
+   Requires `cargo install cargo-audit --locked` once per machine. Fix or
+   consciously accept any findings before tagging.
+
+4. **Commit, then tag and push**:
 
    ```powershell
    git tag v<ver>
@@ -51,14 +60,14 @@ Actions secrets (Settings → Secrets and variables → Actions):
    builds, signs, and attaches the installer, its `.sig`, and `latest.json`
    to a **draft** release. Drafts are invisible to users and to the updater.
 
-4. **Test the update flow** against the draft's artifacts before publishing —
+5. **Test the update flow** against the draft's artifacts before publishing —
    see "Testing an update end to end" below.
 
-5. **Publish the release** on GitHub. The
+6. **Publish the release** on GitHub. The
    `releases/latest/download/latest.json` URL the app polls only resolves for
    published releases, so nothing reaches users before this step.
 
-6. **Verify**: install the previous version, launch it, and confirm it offers
+7. **Verify**: install the previous version, launch it, and confirm it offers
    and completes the update.
 
 ## Cutting a release manually (fallback)
