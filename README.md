@@ -2,10 +2,10 @@
 
 Turn any MIDI into music you can perform in **Mordhau** — automatically arranged across the lute and flute.
 
-[![Latest release](https://img.shields.io/github/v/release/HendoBuilds/skaldic?sort=semver)](https://github.com/HendoBuilds/skaldic/releases/latest)
-[![License: MIT](https://img.shields.io/github/license/HendoBuilds/skaldic)](LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/shayhenderson/skaldic?sort=semver)](https://github.com/shayhenderson/skaldic/releases/latest)
+[![License: MIT](https://img.shields.io/github/license/shayhenderson/skaldic)](LICENSE)
 [![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri-24C8DB?logo=tauri&logoColor=white)](https://tauri.app)
-[![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows&logoColor=white)](https://github.com/HendoBuilds/skaldic/releases/latest)
+[![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows&logoColor=white)](https://github.com/shayhenderson/skaldic/releases/latest)
 
 ![Skaldic](docs/screenshot.png)
 
@@ -46,7 +46,7 @@ The mod.io pages are the source of truth if Mordhau's mod loading changes in a p
 
 ## Install
 
-Download the latest `Skaldic_x.y.z_x64-setup.exe` from the [**Releases**](https://github.com/HendoBuilds/skaldic/releases/latest) page and run it. Windows SmartScreen may warn that the publisher is unknown (the build is unsigned) — choose **More info → Run anyway**. Or build from source (below).
+Download the latest `Skaldic_x.y.z_x64-setup.exe` from the [**Releases**](https://github.com/shayhenderson/skaldic/releases/latest) page and run it. Windows SmartScreen may warn that the publisher is unknown (the build is unsigned) — choose **More info → Run anyway**. Or build from source (below).
 
 See the [code signing policy](docs/CODE_SIGNING_POLICY.md) for how releases are built, and for the project's privacy practices.
 
@@ -86,7 +86,7 @@ Skaldic converts the MIDI into a LuteMod "partition" and writes it into Mordhau'
 
 ## Bugs & feedback
 
-Found a bug or have a specific request? [Open an issue](https://github.com/HendoBuilds/skaldic/issues). For questions, setup help, or to show off your songs, head to [Discussions](https://github.com/HendoBuilds/skaldic/discussions).
+Found a bug or have a specific request? [Open an issue](https://github.com/shayhenderson/skaldic/issues). For questions, setup help, or to show off your songs, head to [Discussions](https://github.com/shayhenderson/skaldic/discussions).
 
 ## Credits & license
 

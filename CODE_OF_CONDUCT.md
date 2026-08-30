@@ -59,7 +59,7 @@ representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the maintainer, [@HendoBuilds](https://github.com/HendoBuilds), by
+reported to the maintainer, [@shayhenderson](https://github.com/shayhenderson), by
 opening an issue in this repository (use a minimal description and ask for a
 private channel if the report is sensitive).
 All complaints will be reviewed and investigated promptly and fairly.

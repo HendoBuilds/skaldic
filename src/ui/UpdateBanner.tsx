@@ -86,7 +86,7 @@ export function UpdateBanner() {
           <p className="update-lead">The update couldn't be downloaded.</p>
           <p className="update-hint">
             Check your connection and try again, or download the latest installer from{" "}
-            <code>github.com/HendoBuilds/skaldic/releases</code> — installing it over this version keeps
+            <code>github.com/shayhenderson/skaldic/releases</code> — installing it over this version keeps
             your songs and projects.
           </p>
           <div className="update-actions">
