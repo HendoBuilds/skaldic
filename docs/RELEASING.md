@@ -1,10 +1,21 @@
 # Releasing Skaldic
 
-How a new version gets from this repo to users' machines. Users on v0.2.0+
-auto-update: the app checks
-`https://github.com/HendoBuilds/skaldic/releases/latest/download/latest.json`
-on launch, verifies the new installer's signature against the public key baked
-into the app, and installs it in place.
+How a new version gets from this repo to users' machines. Users on v0.3.0+
+auto-update: the app checks `https://shayhenderson.dev/skaldic/latest.json` on
+launch, verifies the new installer's signature against the public key baked into
+the app, and installs it in place.
+
+That address redirects to
+`https://github.com/shayhenderson/skaldic/releases/latest/download/latest.json`,
+configured as a redirect rule on the `shayhenderson.dev` zone. The endpoint is
+compiled into every installer and cannot be changed for apps already out in the
+world, so it deliberately points at a name this project controls: if the
+repository is ever renamed, moved, or hosted somewhere else, only the redirect
+has to change and existing installs keep updating. Keep that rule in place for
+as long as any Skaldic build is in use.
+
+Apps built before v0.3.0 check the GitHub URL directly and will keep doing so
+until they update to a v0.3.0+ build.
 
 ## One-time setup (per maintainer machine)
 
@@ -64,8 +75,8 @@ Actions secrets (Settings → Secrets and variables → Actions):
    see "Testing an update end to end" below.
 
 6. **Publish the release** on GitHub. The
-   `releases/latest/download/latest.json` URL the app polls only resolves for
-   published releases, so nothing reaches users before this step.
+   `releases/latest/download/latest.json` URL the endpoint redirects to only
+   resolves for published releases, so nothing reaches users before this step.
 
 7. **Verify**: install the previous version, launch it, and confirm it offers
    and completes the update.
@@ -110,7 +121,8 @@ version as above, then:
    ```
 
    `latest.json` **must** be attached to the latest release — the
-   `releases/latest/download/latest.json` URL the app polls resolves to it.
+   `releases/latest/download/latest.json` URL the updater endpoint redirects to
+   resolves to it.
 
 ## Testing an update end to end
 

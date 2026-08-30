@@ -16,4 +16,4 @@ Skaldic is maintained by a single developer, who holds all roles:
 
 Skaldic does not collect, store, or transmit any personal data or telemetry.
 
-The app's only network access: on launch it contacts GitHub Releases to check for a newer version and, if you accept, downloads the update (see [RELEASING.md](RELEASING.md) for how updates are signed and verified). No user information is sent beyond what any HTTPS request implies. Songs, projects, and settings are stored only on your machine.
+The app's only network access: on launch it contacts `shayhenderson.dev`, which redirects to GitHub Releases, to check for a newer version and, if you accept, downloads the update (see [RELEASING.md](RELEASING.md) for how updates are signed and verified). No user information is sent beyond what any HTTPS request implies. Songs, projects, and settings are stored only on your machine.
