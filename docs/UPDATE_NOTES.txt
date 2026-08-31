@@ -1,0 +1,2 @@
+Maintenance release. Skaldic now checks for new versions through shayhenderson.dev, which keeps updates working if the project ever moves.
+Nothing else has changed.
