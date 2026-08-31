@@ -1,10 +1,10 @@
 [package]
 name = "skaldic"
-version = "0.2.0"
+version = "0.2.1"
 description = "Convert MIDI into Mordhau lute and flute music."
 authors = ["Shay Henderson"]
 license = "MIT"
-repository = "https://github.com/HendoBuilds/skaldic"
+repository = "https://github.com/shayhenderson/skaldic"
 edition = "2021"
 rust-version = "1.77.2"
 

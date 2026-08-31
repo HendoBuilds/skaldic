@@ -2,7 +2,7 @@
 
 How a new version gets from this repo to users' machines. Users on v0.2.0+
 auto-update: the app checks
-`https://github.com/HendoBuilds/skaldic/releases/latest/download/latest.json`
+`https://github.com/shayhenderson/skaldic/releases/latest/download/latest.json`
 on launch, verifies the new installer's signature against the public key baked
 into the app, and installs it in place.
 

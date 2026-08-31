@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "Skaldic",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "identifier": "com.skaldic.bard",
   "build": {
     "frontendDist": "../dist",
@@ -28,7 +28,7 @@
     "updater": {
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEZFODMzMjE2Mzk1NUVCRDcKUldUWDYxVTVGaktEL3ZTckc2SjN6N2lNUTY2eU5xTjdyYWxtUFNuOHY0YlFxbmtyR1RyMEw3NlAK",
       "endpoints": [
-        "https://github.com/HendoBuilds/skaldic/releases/latest/download/latest.json"
+        "https://shayhenderson.dev/skaldic/latest.json"
       ],
       "windows": {
         "installMode": "passive"
