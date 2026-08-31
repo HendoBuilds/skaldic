@@ -46,7 +46,7 @@ const manifest = {
       signature: readFileSync(sigPath, "utf8").trim(),
       url:
         opt("url") ??
-        `https://github.com/HendoBuilds/skaldic/releases/download/v${version}/${installer}`,
+        `https://github.com/shayhenderson/skaldic/releases/download/v${version}/${installer}`,
     },
   },
 };
